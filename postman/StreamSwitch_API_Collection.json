@@ -1,0 +1,283 @@
+{
+  "info": {
+    "name": "StreamSwitch API",
+    "description": "CRUD API collection for StreamSwitch - Pay-TV subscription discovery platform",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080/api"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. TV Providers",
+      "item": [
+        {
+          "name": "Create Provider",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/providers",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\":\"DStv\",\"description\":\"MultiChoice satellite television service\",\"websiteUrl\":\"https://www.dstv.com\",\"country\":\"Nigeria\"}"
+            }
+          }
+        },
+        {
+          "name": "Get All Providers",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/providers"
+          }
+        },
+        {
+          "name": "Get Provider by ID",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/providers/1"
+          }
+        },
+        {
+          "name": "Update Provider",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/providers/1",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\":\"DStv\",\"description\":\"DStv - Premium satellite TV provider\",\"websiteUrl\":\"https://www.dstv.com\",\"country\":\"Nigeria\"}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Channels",
+      "item": [
+        {
+          "name": "Create Channel",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/channels",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\":\"SuperSport\",\"channelNumber\":\"158\",\"genre\":\"Sports\",\"description\":\"Africas premier sports channel\",\"logoUrl\":\"https://example.com/supersport.png\"}"
+            }
+          }
+        },
+        {
+          "name": "Create Channel 2",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/channels",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\":\"CNN\",\"channelNumber\":\"401\",\"genre\":\"News\",\"description\":\"24-hour news network\",\"logoUrl\":\"https://example.com/cnn.png\"}"
+            }
+          }
+        },
+        {
+          "name": "Get All Channels",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/channels"
+          }
+        },
+        {
+          "name": "Get Channel by ID",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/channels/1"
+          }
+        },
+        {
+          "name": "Get Channels by Genre",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/channels/genre/Sports"
+          }
+        },
+        {
+          "name": "Update Channel",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/channels/1",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\":\"SuperSport HD\",\"channelNumber\":\"158\",\"genre\":\"Sports\",\"description\":\"High-definition sports coverage\",\"logoUrl\":\"https://example.com/supersport-hd.png\"}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Subscription Packages",
+      "item": [
+        {
+          "name": "Create Package (under Provider 1)",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/packages/provider/1",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\":\"DStv Compact\",\"description\":\"Affordable family package with local and entertainment channels\",\"monthlyPrice\":3500.00,\"billingCycle\":\"monthly\",\"active\":true}"
+            }
+          }
+        },
+        {
+          "name": "Create Package 2 (under Provider 1)",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/packages/provider/1",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\":\"DStv Premium\",\"description\":\"Premium package with all channels including movies and sports\",\"monthlyPrice\":18000.00,\"billingCycle\":\"monthly\",\"active\":true}"
+            }
+          }
+        },
+        {
+          "name": "Get All Packages",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/packages"
+          }
+        },
+        {
+          "name": "Get Package by ID",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/packages/1"
+          }
+        },
+        {
+          "name": "Get Packages by Provider",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/packages/provider/1"
+          }
+        },
+        {
+          "name": "Update Package",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/packages/1",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\":\"DStv Compact Plus\",\"description\":\"Mid-tier package with sports and entertainment\",\"monthlyPrice\":5500.00,\"billingCycle\":\"monthly\",\"active\":true}"
+            }
+          }
+        },
+        {
+          "name": "Add Channel to Package",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/packages/1/channels/1"
+          }
+        },
+        {
+          "name": "Add Channel 2 to Package",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/packages/1/channels/2"
+          }
+        },
+        {
+          "name": "Remove Channel from Package",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/packages/1/channels/2"
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. Cleanup (Delete)",
+      "item": [
+        {
+          "name": "Delete Package",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/packages/2"
+          }
+        },
+        {
+          "name": "Delete Package 1",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/packages/1"
+          }
+        },
+        {
+          "name": "Delete Channel 2",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/channels/2"
+          }
+        },
+        {
+          "name": "Delete Channel 1",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/channels/1"
+          }
+        },
+        {
+          "name": "Delete Provider",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/providers/1"
+          }
+        }
+      ]
+    }
+  ]
+}
